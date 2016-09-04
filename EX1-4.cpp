@@ -29,7 +29,7 @@ int DivZero(int a, int b, int c)
 #endif
 
 #if 1
-//EX1-4-1
+//EX1-5-1
 int DivZero(int a, int b, int c)
 {
     if ( a < 0 && b < 0 && c < 0 )
@@ -40,7 +40,7 @@ int DivZero(int a, int b, int c)
 }
 #endif
 
-//EX1-4-2
+//EX1-5-2
 int sumArr(int * arr, int n)
 {
     if ( n < 0 )
