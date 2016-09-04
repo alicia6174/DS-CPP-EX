@@ -3,6 +3,22 @@
 
 using namespace std;
 
+/*---------
+'throw' is used to differentiate error types.
+If you use 'throw' in a regular function.
+Then you must catch it in main().
+
+throw
+try
+{
+
+}
+catch()
+{
+
+}
+---------*/
+
 # if 0
 int DivZero(int a, int b, int c)
 {
@@ -13,22 +29,18 @@ int DivZero(int a, int b, int c)
 #endif
 
 #if 1
+//EX1-5-1
 int DivZero(int a, int b, int c)
 {
     if ( a < 0 && b < 0 && c < 0 )
         throw 1;
     if ( a == 0 && b == 0 && c == 0 )
         throw 2;
-    if ( a <= 0 || b <= 0 || c <= 0 )
-    {
-        fprintf(stderr, "a, b, and c shoud be >0.\n");
-        return -1;
-        //exit(-1);
-    }
     return a + b * c + b / c;
 }
 #endif
 
+//EX1-5-2
 int sumArr(int * arr, int n)
 {
     if ( n < 0 )
@@ -58,32 +70,18 @@ int main(int argc, const char * argv[])
     try{cout << DivZero(-1, -2, -3) << endl;}
     catch(int e)
     {
-        cout << "An exception has been thrown" << endl;
-        cout << e << endl;
-        //return 1;
+        printf("err = %d\n", e);
     }
     try{cout << DivZero(0, 0, 0) << endl;}
     catch(int e)
     {
-        cout << "An exception has been thrown" << endl;
-        cout << e << endl;
-        //return 1;
+        printf("err = %d\n", e);
     }
-    int ret = 0;
-    ret = DivZero(-1, 0, 1);
-    //try{cout << DivZero(0, 0, 0) << endl;}
-    //catch(...)
-    //{
-    //     cout << "An exception has been thrown" << endl;
-    //     cout << e << endl;
-    //     return 1;
-    // }
     try{cout << DivZero(1, 4, 2) << endl;}
     catch(int e)
     {
-        cout << "An exception has been thrown" << endl;
-        cout << e << endl;
-        //return 1;
+        printf("err = %d\n", e);
+
     }
 #endif
 
