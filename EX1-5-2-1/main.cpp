@@ -9,6 +9,20 @@
 
 double poly(const double * coef, int deg, double x, int * cnt)
 {
+//===========================
+    double pl = 0;
+
+    for (pl = coef[deg]; deg > 0; pl = pl*x + coef[--deg])
+        ;
+    // double pl = coef[deg];
+    //while(deg > 0)
+    //{
+    //  pl = pl*x + coef[--deg];
+    //}
+
+    return pl;
+//===========================
+
     if (cnt)
         *cnt += 1;
 
