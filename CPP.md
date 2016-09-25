@@ -12,18 +12,18 @@
 
   accumulate(start, end, initialValue, operator)
 
-```cpp
-#include <stdio.h>
-#include <stdlib.h>
-#include <iostream>
-#include <algorithm> // for accumulate
-using namespace std;
+	```cpp
+	#include <stdio.h>
+	#include <stdlib.h>
+	#include <iostream>
+	#include <algorithm> // for accumulate
+	using namespace std;
 		
-int a[5] = {1, 5, 7, 2, 4};
-int iniVal = 0;
-int sum = accumulate(a, a+4, iniVal);
-int prd = accumulate(a, a+4, iniVal, multiplies<int>());
-```
+	int a[5] = {1, 5, 7, 2, 4};
+	int iniVal = 0;
+	int sum = accumulate(a, a+4, iniVal);
+	int prd = accumulate(a, a+4, iniVal, multiplies<int>());
+	```
 
 * copy(start, end, to)
 
@@ -46,19 +46,19 @@ int prd = accumulate(a, a+4, iniVal, multiplies<int>());
 * Time complexity
 
 ### Class ###
-A class includes -
+* A class includes -
 
-* class name
-* data member
-* member function
-* public / protected / private 
+	* class name
+	* data member
+	* member function
+	* public / protected / private 
 
-C++ overload operator >> and << -
+* C++ overload operator >> and << -
 
-```cpp
-friend ostream& operator<<(ostream &os, const Cpx &d);
-friend istream& operator>>(istream &os, Cpx &d);
-```
-
+	```cpp
+	friend ostream& operator<<(ostream &os, const Cpx &d);
+	friend istream& operator>>(istream &os, Cpx &d);
+	```
+	[[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-1-4/main.cpp)
 
 ### Array ###
