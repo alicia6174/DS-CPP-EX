@@ -53,4 +53,12 @@ A class includes -
 * member function
 * public / protected / private 
 
+C++ overload operator >> and << -
+
+```cpp
+friend ostream& operator<<(ostream &os, const Cpx &d);
+friend istream& operator>>(istream &os, Cpx &d);
+```
+
+
 ### Array ###
