@@ -1,11 +1,11 @@
 # Fundamentals of Data Structures in C++ #
-#[Ref.](https://www.amazon.com/Fundamentals-Data-Structures-Ellis-Horowitz/dp/0929306376)#
+# [Ref.](https://www.amazon.com/Fundamentals-Data-Structures-Ellis-Horowitz/dp/0929306376)#
 
 ## Basic concepts ##
 ### Recursive ###
 * Recursive to iterative by finite-state machine 
 
-  [[C++ Code]](https://github.com/alicia6174/Finite-state-machine)
+  [[C++]](https://github.com/alicia6174/Finite-state-machine)
 
 ### Standard Template Library (STL) ###
 * accumulate(start, end, initialValue)
@@ -29,13 +29,28 @@ int prd = accumulate(a, a+4, iniVal, multiplies<int>());
 
   next_permutation(start, end)
   
-  [[C++ Code]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX1-6-1/main.cpp)
+  [[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX1-6-1/main.cpp)
   
 * count(start, end, value)
 
-  [[C++ Code]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX1-6-4/main.cpp)
+  [[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX1-6-4/main.cpp)
 
 * fill(start, end, value)
 
+  [[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX1-6-5/main.cpp)
+
 * Note: Most input variables of the above functions satisfy the form [start, end).
 
+### Performance analysis / measurement ###
+* Space complexity
+* Time complexity
+
+### Class ###
+A class includes -
+
+* class name
+* data member
+* member function
+* public / protected / private 
+
+### Array ###
