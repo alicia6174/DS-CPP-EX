@@ -134,15 +134,12 @@
 * `new` is the same as `malloc`
 * `delete` is the same as `free`
 
-```c
-int *ptr = NULL;
-ptr = (int *)malloc(sizeof(int)*100);/
-free(ptr);
-```
-
 ```cpp
-int *ptr = new int(100);
-delete ptr;
+int* a = new int;		//int* a = (int*) malloc(sizeof(int));
+delete a;				//free(a);
+
+int* b = new int(100);	//int* b = (int*) malloc(sizeof(int)*100);
+delete [] b;			//free(b)
 ```
 
 ### reference & ###
@@ -183,6 +180,24 @@ while (itr != V.end()) {
 	...
 	++itr;
 }
+```
+
+### Set ###
+
+```cpp
+#include <set>
+```
+
+### Map ###
+
+```cpp
+#include <map> // map<int,int> & mp
+```
+
+### Queue ###
+
+```cpp
+#include <queue> // queue<int> q;
 ```
 
 ### Math ###
@@ -278,6 +293,8 @@ float c = pow(1.5, 2);
 
 [2] [Proect Euler](https://projecteuler.net/)
 
-[3] [Hsin](https://docs.google.com/document/d/1ghmOR_sdnTmfMJOzu6ohAzkowNOKHPnBuskVjlCDpJ8/edit)
+[3] File: /Google Drive/Hsin_computer_course/C++.gdoc
+
+[4] Folder: /Google Drive/Hsin_computer_course_in_coding
 
 
