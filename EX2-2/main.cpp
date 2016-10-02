@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 class Arr
@@ -8,40 +9,37 @@ class Arr
     float *m_buf;
 public:
     //#(a)
+    //fill
     Arr(int n, float v):
         m_size(n),
         m_buf(new float[n])
     {
-        for (int i = 0; i < n; ++i)
-        {
-            m_buf[i] = v;
-        }
+        fill(m_buf, m_buf + m_size, v);
     }
 
-    //Does it satisfy #(b)?
-    //(not used as 'Arr a = b'...)
-
+    //#(b)
+    //'Arr a(b)' and 'Arr a = b' are the same.
     Arr(const Arr &a)
     {
         *this = a;
     }
 
-    //Does this satisfy #(c)?
-    //(not of the prototype 'Arr &operator='...)
+    //#(c)
+    //The prototype 'void operator='  can't be used to 'p1=p2=p3'
+    //copy
     Arr & operator=(const Arr &a)
     {
+        delete [] m_buf;
+        m_buf = new float[a.m_size];
         m_size = a.m_size;
-        m_buf = new float(m_size);
 
-        for (int i = 0; i < m_size; ++i)
-        {
-            m_buf[i] = a.m_buf[i];
-        }
+        copy (a.m_buf, a.m_buf + a.m_size, m_buf);
 
         return *this;
     }
 
-    //#(d) error: pointer being freed was not allocated.. ?
+    //#(d)
+    //delete[]
     ~Arr()
     {
         delete [] m_buf;
@@ -68,6 +66,7 @@ public:
         cout << "Input a data number." << endl;
 
         int cnt = 0;
+        //greedy principle
         while ((cnt < a.m_size) && (s >> a.m_buf[cnt++]) )
         {
             cout << "Input the next data number." << endl;
@@ -80,10 +79,11 @@ public:
 
 ostream& operator<<(ostream &s, const Arr &a)
 {
-    for (int i = 0; i < a.m_size; ++i)
-    {
-        s << "[" << a.m_buf[i] << "]";
-    }
+    //lambda
+    //std=c++11
+    for_each(a.m_buf, a.m_buf + a.m_size,
+            [&s](float v) { s << "[" << v << "]";});
+
     s << endl;
     return s;
 }
@@ -102,9 +102,14 @@ int main(int argc, const char * argv[])
     //(g)
     #if 1
     {
-        Arr a(3, 0);
-        cin >> a;
+        Arr a(3, 100);
         cout << a;
+
+        Arr b(4, 200);
+        cout << b;
+        b = a;
+        cout << b;
+
         return 0;
     }
     #endif

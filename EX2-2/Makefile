@@ -3,7 +3,7 @@
 ###############################################################################
 CC       = gcc
 CXX      = g++
-CFLAGS   = -g -Wall
+CFLAGS   = -g -Wall -std=c++11
 CXXFLAGS = $(CFLAGS) -Weffc++
 LIBS     = -lm
 INCPATH  =
