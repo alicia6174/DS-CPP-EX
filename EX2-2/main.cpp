@@ -4,75 +4,72 @@ using namespace std;
 
 class Arr
 {
-    int siz;
-    float *arr;
+    int m_size;
+    float *m_buf;
 public:
     //#(a)
-    Arr(int n, float v)
+    Arr(int n, float v):
+        m_size(n),
+        m_buf(new float[n])
     {
-        siz = n;
-        arr = (float*) malloc(sizeof(float)*n);
         for (int i = 0; i < n; ++i)
         {
-            arr[i] = v;
+            m_buf[i] = v;
         }
     }
 
     //Does it satisfy #(b)?
     //(not used as 'Arr a = b'...)
+
     Arr(const Arr &a)
     {
-        siz = a.siz;
-        //arr = (float*) malloc(sizeof(float)*siz);
-        arr = new float(siz);
-        for (int i = 0; i < siz; ++i)
-        {
-            arr[i] = a.arr[i];
-        }
+        *this = a;
     }
 
     //Does this satisfy #(c)?
     //(not of the prototype 'Arr &operator='...)
-    void operator=(const Arr &a)
+    Arr & operator=(const Arr &a)
     {
-        siz = a.siz;
-        arr = (float*) malloc(sizeof(float)*siz);
-        for (int i = 0; i < siz; ++i)
+        m_size = a.m_size;
+        m_buf = new float(m_size);
+
+        for (int i = 0; i < m_size; ++i)
         {
-            arr[i] = a.arr[i];
+            m_buf[i] = a.m_buf[i];
         }
+
+        return *this;
     }
 
     //#(d) error: pointer being freed was not allocated.. ?
-    ~Arr(){delete arr;}
+    ~Arr()
+    {
+        delete [] m_buf;
+    }
 
     //#(e)
     float& operator[](int i)
     {
-        if (i >= siz)
+        if (i >= m_size)
         {
             fprintf(stderr, "Error.");
             exit(-1);
         }
-        return arr[i];
+        return m_buf[i];
     }
 
     //#(f)
-    int getSize(){return siz;}
+    int getSize(){return m_size;}
 
     //#(g)
     friend ostream& operator<<(ostream &s, const Arr &a);
     friend istream& operator>>(istream &s, Arr &a)
     {
-        cout << "Input the size." << endl;
-        s >> a.siz;
         cout << "Input a data number." << endl;
-        float tmp;
+
         int cnt = 0;
-        while ( (s >> tmp) && (cnt < a.siz) )
+        while ((cnt < a.m_size) && (s >> a.m_buf[cnt++]) )
         {
-            a.arr[cnt] = tmp;
-            cnt++;
             cout << "Input the next data number." << endl;
             cout << "Enter \\n to end the key-in." << endl;
             // This sentence shows once more.. (why?)
@@ -83,9 +80,9 @@ public:
 
 ostream& operator<<(ostream &s, const Arr &a)
 {
-    for (int i = 0; i < a.siz; ++i)
+    for (int i = 0; i < a.m_size; ++i)
     {
-        s << "[" << a.arr[i] << "]";
+        s << "[" << a.m_buf[i] << "]";
     }
     s << endl;
     return s;
@@ -103,10 +100,13 @@ int main(int argc, const char * argv[])
     #endif
 
     //(g)
-    #if 0
-    Arr a(3, 0);
-    cin >> a;
-    cout << a;
+    #if 1
+    {
+        Arr a(3, 0);
+        cin >> a;
+        cout << a;
+        return 0;
+    }
     #endif
 
     //(c)
