@@ -285,6 +285,7 @@ float c = pow(1.5, 2);
  		friend istream& operator>>(istream &s, Poly &p);
  }
  ``` 
+ [[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-2-3-8/main.cpp)
 
 ## Stack & Queue ##
 
