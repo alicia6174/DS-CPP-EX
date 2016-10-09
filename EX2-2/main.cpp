@@ -8,8 +8,7 @@ class Arr
     int m_size;
     float *m_buf;
 public:
-    //#(a)
-    //fill
+    //#(a) Use 'fill'.
     Arr(int n, float v):
         m_size(n),
         m_buf(new float[n])
@@ -18,15 +17,16 @@ public:
     }
 
     //#(b)
-    //'Arr a(b)' and 'Arr a = b' are the same.
+    //While invoking, 'Arr a(b)' and 'Arr a = b' are the same.
     Arr(const Arr &a)
     {
         *this = a;
     }
 
     //#(c)
-    //The prototype 'void operator='  can't be used to 'p1=p2=p3'
-    //copy
+    //The prototype 'void operator=' can't be used to 'p1=p2=p3'.
+    //Thus we use 'Arr & operator='.
+    //Use 'copy'.
     Arr & operator=(const Arr &a)
     {
         delete [] m_buf;
@@ -38,8 +38,7 @@ public:
         return *this;
     }
 
-    //#(d)
-    //delete[]
+    //#(d) Use 'delete[]'.
     ~Arr()
     {
         delete [] m_buf;
@@ -66,12 +65,13 @@ public:
         cout << "Input a data number." << endl;
 
         int cnt = 0;
-        //greedy principle
+        //By greedy principle, we can't exchange
+        //'cnt < a.m_size' and 's >> a.m_buf[cnt++]'.
+        //Otherwise, the input will show once more.
         while ((cnt < a.m_size) && (s >> a.m_buf[cnt++]) )
         {
             cout << "Input the next data number." << endl;
             cout << "Enter \\n to end the key-in." << endl;
-            // This sentence shows once more.. (why?)
         }
         return s;
     }
@@ -79,8 +79,7 @@ public:
 
 ostream& operator<<(ostream &s, const Arr &a)
 {
-    //lambda
-    //std=c++11
+    //Need to add '-std=c++11' in the Makefile.
     for_each(a.m_buf, a.m_buf + a.m_size,
             [&s](float v) { s << "[" << v << "]";});
 
@@ -100,7 +99,7 @@ int main(int argc, const char * argv[])
     #endif
 
     //(g)
-    #if 1
+    #if 0
     {
         Arr a(3, 100);
         cout << a;

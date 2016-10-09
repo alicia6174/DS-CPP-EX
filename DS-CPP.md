@@ -213,6 +213,12 @@ double b = sqrt(2);
 float c = pow(1.5, 2);
 ```
 
+### Greedy principle ###
+[[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-2/main.cpp)
+
+### -std=c++11 ###
+[[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-2/main.cpp)
+
 ## Array ##
 
 * Arrays
@@ -232,6 +238,7 @@ float c = pow(1.5, 2);
  		friend istream& operator>>(istream &s, Arr &a);
  }
  ```
+[[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-2/main.cpp)
 
 * Polynomials
 

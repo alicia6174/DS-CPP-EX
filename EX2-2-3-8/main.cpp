@@ -84,7 +84,8 @@ Poly Poly::operator+(Poly &p)
     return ret;
 }
 
-// only for polynomials with coeficients in descending order
+// Only for polynomials with coeficients in descending order
+// For general ones, we need a compare function to sort them first.
 Poly Poly::operator-(Poly &p)
 {
     Poly ret = Poly();
