@@ -6,40 +6,6 @@
 
   [[C++]](https://github.com/alicia6174/Finite-state-machine)
 
-### Standard Template Library (STL) ###
-* accumulate(start, end, initialValue)
-
-  accumulate(start, end, initialValue, operator)
-
-	```cpp
-	#include <stdio.h>
-	#include <stdlib.h>
-	#include <iostream>
-	#include <algorithm> // for accumulate
-	using namespace std;
-		
-	int a[5] = {1, 5, 7, 2, 4};
-	int iniVal = 0;
-	int sum = accumulate(a, a+4, iniVal);
-	int prd = accumulate(a, a+4, iniVal, multiplies<int>());
-	```
-
-* copy(start, end, to)
-
-  next_permutation(start, end)
-  
-  [[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX1-6-1/main.cpp)
-  
-* count(start, end, value)
-
-  [[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX1-6-4/main.cpp)
-
-* fill(start, end, value)
-
-  [[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX1-6-5/main.cpp)
-
-* Note: Most input variables of the above functions satisfy the form [start, end).
-
 ### Performance analysis / measurement ###
 * Space complexity
 * Time complexity
@@ -129,6 +95,41 @@
 	```
 	[[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-1-4/main.cpp)
 
+## C++ build-in functions ##
+### Standard Template Library (STL) ###
+* accumulate(start, end, initialValue)
+
+  accumulate(start, end, initialValue, operator)
+
+	```cpp
+	#include <stdio.h>
+	#include <stdlib.h>
+	#include <iostream>
+	#include <algorithm> // for accumulate
+	using namespace std;
+		
+	int a[5] = {1, 5, 7, 2, 4};
+	int iniVal = 0;
+	int sum = accumulate(a, a+4, iniVal);
+	int prd = accumulate(a, a+4, iniVal, multiplies<int>());
+	```
+
+* copy(start, end, to)
+
+  next_permutation(start, end)
+  
+  [[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX1-6-1/main.cpp)
+  
+* count(start, end, value)
+
+  [[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX1-6-4/main.cpp)
+
+* fill(start, end, value)
+
+  [[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX1-6-5/main.cpp)
+
+* Note: Most input variables of the above functions satisfy the form [start, end).
+
 ### new / delete ###
 
 * `new` is the same as `malloc`
@@ -142,8 +143,7 @@ int* b = new int(100);	//int* b = (int*) malloc(sizeof(int)*100);
 delete [] b;			//free(b)
 ```
 
-### reference & ###
-
+### Reference & ###
 ```cpp
 int a = 10;
 int &b = a;
@@ -152,7 +152,6 @@ printf("a = %d", a); // a = 2
 ```
  
 ### Vector ###
-
 ```cpp
 #include <stdio.h> 
 #include <stdlib.h>
@@ -182,26 +181,47 @@ while (itr != V.end()) {
 }
 ```
 
-### Set ###
+### String ###
+```cpp
+string s(n, c); 
+s[i] = 'a';
+s = "abcde";
+s.length(); 
+s.begin(); 
+s.end();
+s.push_back(c);
+s.erase(start, length);
+count(start, end, c);
+s.find(s); // indexof type %lu
+s.replace(start, length, s); 
+string(c_str);	// C-string -> std:string
+s.c_str();		// std:string -> C-string
+strchr(s.c_str(), c); // pointer
+strchr(s.c_str(), c)-s.c_str(); // index of type %lu
+strcpy(s.c_str(), t.c_str());
+strcat(s.c_str(), t.c_str());
+strncat(s.c_str(), t.c_str(), n);
+strcmp(s.c_str(), t.c_str()); // return the ASKII of s-t
+strncmp(s.c_str(), t.c_str(), n); // return the ASKII of (s-t)(0:n-1)
+...
+```
 
+### Set ###
 ```cpp
 #include <set>
 ```
 
 ### Map ###
-
 ```cpp
 #include <map> // map<int,int> & mp
 ```
 
 ### Queue ###
-
 ```cpp
 #include <queue> // queue<int> q;
 ```
 
 ### Math ###
-
 ```cpp
 #include <stdio.h> 
 #include <stdlib.h>
@@ -221,9 +241,9 @@ float c = pow(1.5, 2);
 
 ## Array ##
 
-* Arrays
-
+### Arrays ###
  ```cpp
+ // ADT
  class Array{
  int siz;
  float *arr;
@@ -236,19 +256,18 @@ float c = pow(1.5, 2);
  		void operator=(const Arr &a);
  		friend ostream& operator<<(ostream &s, const Arr &a);
  		friend istream& operator>>(istream &s, Arr &a);
- }
+ };
  ```
 [[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-2/main.cpp)
 
-* Polynomials
-
+### Polynomials ###
  ```cpp
+ // ADT
  class Term{
- friend Poly;
  private:
  		float cof;
  		int exp;
- }
+ };
  
  // array
  class Poly{
@@ -265,12 +284,12 @@ float c = pow(1.5, 2);
  		float Eval(float x);
  		friend ostream& operator<<(ostream &s, const Poly &p);
  		friend istream& operator>>(istream &s, Poly &p);
- }
+ };
  
  // vector
  #include <vector>
  class Poly_vec{
- provate:
+ private:
  		vector<Term> terms;
  		int num_terms;   // # of non-zero terms
  public:
@@ -283,10 +302,57 @@ float c = pow(1.5, 2);
  		float operator()(float x); // evaluation
  		friend ostream& operator<<(ostream &s, const Poly &p);
  		friend istream& operator>>(istream &s, Poly &p);
- }
+ };
  ``` 
  [[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-2-3-8/main.cpp)
 
+### Sparse matrix ###
+```cpp
+// ADT
+ class MatrixTerm{
+ private:
+  		int row, col, value;
+ };
+ 
+class SparseMatrix{
+private:
+		int rows, cols, terms, capacity; // terms=#(nonzero terms)
+		MatrixTerm *smArray;			 // capacity=size of array
+public:
+		SparseMatrix(int r, int c, int t); // t = terms
+		SparseMatrix Transpose();
+		SparseMatrix FastTranspose();
+		SparseMatrix Add(SparseMatrix b);
+		SparseMatrix Multiply(SparseMatrix b);
+};
+```
+
+### Multi-dimensional matrix ###
+
+### String ###
+```cpp
+// ADT
+class String
+public:
+		String(char *init, int m);
+		bool operator==(String t);
+		bool operator!(); // empty-> true
+		int Length();
+		String Concat(String t);
+		String Substr(int i, int j);
+		int Find(String pat); // Find 1st place of substring pat
+		int FastFind(String pat); // Knuth-Morris-Pratt
+}
+```
+```cpp
+// C++ build-in functions
+#include <stdio.h>
+#include <string>
+using namespace std;
+
+string s(3, 'a');
+...
+```
 ## Stack & Queue ##
 
 ## Linked list ##
@@ -294,6 +360,10 @@ float c = pow(1.5, 2);
 ## Tree ##
 
 ## Graph ##
+
+## Hash ##
+
+## Sorting ##
 
 ## References ##
 
