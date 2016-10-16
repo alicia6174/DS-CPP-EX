@@ -1,5 +1,3 @@
-# Fundamentals of Data Structures in C++ #
-
 ## Basic concepts ##
 ### Recursive ###
 * Recursive to iterative by finite-state machine 
@@ -434,10 +432,10 @@ string s(3, 'a');
 ```
 ### Challenges ###
 * Random walk
-	[[C++]]()
+	[[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-8-8/main.cpp)
 	
 * Moving knight
-	[[C++]]()
+	[[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-8-9/main.cpp)
 
 ## Stack & Queue ##
 
@@ -462,7 +460,7 @@ sort(A, A+4); // A = {1,2,3,5,4,6,9,0}
 
 ## References ##
 
-[1] [Fundamentals Data Structures in C++ by Ellis Horowitz](https://www.amazon.com/Fundamentals-Data-Structures-Ellis-Horowitz/dp/0929306376) 
+[1] [Fundamentals of Data Structures in C++ by Ellis Horowitz](https://www.amazon.com/Fundamentals-Data-Structures-Ellis-Horowitz/dp/0929306376) 
 
 [2] [Proect Euler](https://projecteuler.net/)
 

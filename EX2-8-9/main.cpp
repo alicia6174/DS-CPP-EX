@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <iostream>
 #include <algorithm>
-//#include <vector>
 #include <memory.h>
 using namespace std;
 
@@ -39,7 +38,6 @@ void showBoard()
     printf("\n");
 }
 
-
 bool canMov()
 {
     for (int l = 0; l < 8; ++l)
@@ -69,9 +67,11 @@ long unsigned findMinIdx()
 int main(int argc, const char * argv[])
 {
     board[istart][jstart] = 1;
-    while (steps < 64)
+    while (1)
     {
         napos = 0;
+        memset(inext, 0, sizeof(int)*8);
+        memset(jnext, 0, sizeof(int)*8);
         memset(exits, 0, sizeof(int)*8);
 
         for (int l = 0; l < 8; ++l)
@@ -84,6 +84,12 @@ int main(int argc, const char * argv[])
                 jnext[l] = jwill;
                 napos += 1;
 
+                if (steps == 63)
+                {
+                    board[iwill][jwill] = 64;
+                    showBoard();
+                    exit(-1);
+                }
 
                 int num_exits = 0;
                 for (int k = 0; k < 8; ++k)
@@ -99,7 +105,7 @@ int main(int argc, const char * argv[])
             }
         }
 
-        if ((steps < 64) && (napos == 0))
+        if (napos == 0)
         {
             printf("Fail! The total steps is %d.", steps);
             showBoard();
@@ -111,16 +117,7 @@ int main(int argc, const char * argv[])
         jstart = jnext[min_idx];
         steps += 1;
         board[istart][jstart] = steps;
-
-        // showArray(exits);
-        // printf("napos = %d, min_idx = %lu\n", napos, min_idx);
-        // showArray(inext);
-        // showArray(jnext);
-        // printf("\n");
-        // showBoard();
-        // printf("[%d][%d]\n", istart, jstart);
     }
-    showBoard();
 
     return 0;
 }
