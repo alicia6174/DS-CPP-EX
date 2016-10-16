@@ -203,8 +203,8 @@ strcat(s.c_str(), t.c_str());
 strncat(s.c_str(), t.c_str(), n);
 strcmp(s.c_str(), t.c_str()); // return the ASKII of s-t
 strncmp(s.c_str(), t.c_str(), n); // return the ASKII of (s-t)(0:n-1)
-...
 ```
+[[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-6/main.cpp)
 
 ### Set ###
 ```cpp
@@ -232,12 +232,51 @@ int a = sqrt(2);
 double b = sqrt(2);
 float c = pow(1.5, 2);
 ```
+### Random ###
+```cpp
+// always the same result
+#include <stdio.h>
+#include <stdlib.h>
+
+printf("%d ", rand()); 
+```
+```cpp
+// different results
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+srand( (unsigned)time(NULL) ); 
+printf("%d\n", rand()); 
+```
+```cpp
+// 1~100
+srand( (unsigned)time(NULL) ); 
+rand();
+num = (int)( rand() /(RAND_MAX+1.0)*100.0 + 1);
+printf("%d\n", num);
+```
 
 ### Greedy principle ###
 [[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-2/main.cpp)
 
-### -std=c++11 ###
+### C++ 11 ###
+New C++ syntax has been invented since 2011, such as **lambda expression**.
+
+Need to add `CFLAGS   = -g -Wall -std=c++11` in the Makefile while using it.
+
+```cpp
+// lambda expression in C++
+for_each(arr, arr + size,
+		[&s](float lambda) { s << "[" << lambda << "]";});
+```
+```python
+# lambda expression in C++
+map(arr, lambda x: x * 2)
+```
+
 [[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-2/main.cpp)
+[[Makefile]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-2/Makefile)
 
 ## Array ##
 
@@ -259,6 +298,12 @@ float c = pow(1.5, 2);
  };
  ```
 [[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-2/main.cpp)
+
+```cpp
+// C++ build-in functions
+list()
+```
+To see more, please refer to [here](http://pydoing.blogspot.tw/2011/02/python-list.html).
 
 ### Polynomials ###
  ```cpp
@@ -351,7 +396,7 @@ public:
 using namespace std;
 
 string s(3, 'a');
-...
+//...see above
 ```
 ## Stack & Queue ##
 
