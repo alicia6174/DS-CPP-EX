@@ -31,7 +31,6 @@ int main(int argc, const char * argv[])
     int cnt = 0;
     int itr = 0;
     srand( (unsigned)time(NULL) );
-    rand();
     while ((!isFinish()) && (itr <= MAX_ITER))
     {
         int num = (int)(rand() / (RAND_MAX+1.0)*8.0);

@@ -246,14 +246,19 @@ printf("%d ", rand());
 #include <stdlib.h>
 #include <time.h>
 
-srand( (unsigned)time(NULL) ); 
+// srand() can't be put in loop 
+// o.w. the resulting numbers will be the same
+srand( (unsigned)time(NULL) ); // take time series as random seeds 
 printf("%d\n", rand()); 
 ```
 ```cpp
 // 1~100
-srand( (unsigned)time(NULL) ); 
-rand();
-num = (int)( rand() /(RAND_MAX+1.0)*100.0 + 1);
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+srand( (unsigned)time(NULL) );
+num = (int)( rand() / (RAND_MAX+1.0)*100.0 + 1);
 printf("%d\n", num);
 ```
 
