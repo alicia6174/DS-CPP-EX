@@ -128,6 +128,27 @@
 
   [[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX1-6-5/main.cpp)
 
+* find(start, end, value) 
+
+	```cpp
+	#include <stdio.h>
+	#include <stdlib.h>
+	#include <iostream>
+	#include <algorithm> // for accumulate
+	using namespace std;
+
+	int A[5] = {3, 2, 4, 1, 6}; 
+	long signed idx = (find(A, A+5, 1) - A);  // return a pointer
+	printf("idx=%lu\n", idx); // idx=3
+	
+	int B[5] = {};
+	copy(A, A+5, B);
+	sort(B, B+5);
+	int mini = B[0];
+	long signed min_idx = (find(A, A+5, mini) - exits);
+	printf("min_idx=%lu\n", min_idx); // min_idx=3 
+	```
+	
 * Note: Most input variables of the above functions satisfy the form [start, end).
 
 ### new / delete ###
@@ -246,10 +267,14 @@ printf("%d ", rand());
 #include <stdlib.h>
 #include <time.h>
 
-// srand() can't be put in loop 
-// o.w. the resulting numbers will be the same
 srand( (unsigned)time(NULL) ); // take time series as random seeds 
 printf("%d\n", rand()); 
+
+// srand() can be executed only once in a code 
+// srand() can't be put in a loop 
+// o.w. the resulting numbers will be the same
+srand( (unsigned)time(NULL) ); 
+for (int i = 0; i < 10; ++i) printf("%d\n", rand()); 
 ```
 ```cpp
 // 1~100
@@ -378,6 +403,10 @@ public:
 ```
 
 ### Multi-dimensional matrix ###
+```cpp
+int A[10] = {0};
+int B[10][10] = {{0}};
+```
 
 ### String ###
 ```cpp
@@ -403,6 +432,13 @@ using namespace std;
 string s(3, 'a');
 //...see above
 ```
+### Challenges ###
+* Random walk
+	[[C++]]()
+	
+* Moving knight
+	[[C++]]()
+
 ## Stack & Queue ##
 
 ## Linked list ##
@@ -414,6 +450,15 @@ string s(3, 'a');
 ## Hash ##
 
 ## Sorting ##
+```cpp
+// C++ built-in functions
+#include <stdio.h>
+#include <algorithm>
+
+int A[8]={1,3,5,2,4,6,9,0};
+sort(A, A+8); // A = {0,1,2,3,4,5,6,9}
+sort(A, A+4); // A = {1,2,3,5,4,6,9,0}
+```
 
 ## References ##
 
