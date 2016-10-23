@@ -1,4 +1,4 @@
-## Basic concepts ##
+## Basic concepts about algorithms and C++ ##
 ### Recursive ###
 * Recursive to iterative by finite-state machine 
 
@@ -92,6 +92,10 @@
 	friend istream& operator>>(istream &s, Class &c);
 	```
 	[[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-1-4/main.cpp)
+	
+### Template ###
+* Template function
+* Template class
 
 ## C++ build-in functions ##
 ### Standard Template Library (STL) ###
@@ -149,25 +153,39 @@
 	
 * Note: Most input variables of the above functions satisfy the form [start, end).
 
-### new / delete ###
-
-* `new` is the same as `malloc`
-* `delete` is the same as `free`
-
+### String ###
 ```cpp
-int* a = new int;		//int* a = (int*) malloc(sizeof(int));
-delete a;				//free(a);
+string s(n, c); 
+s[i] = 'a';
+s = "abcde";
+s.length(); 
+s.begin(); 
+s.end();
+s.push_back(c);
+s.erase(start, length);
+count(start, end, c);
+s.find(s); // indexof type %lu
+s.replace(start, length, s); 
+string(c_str);	// C-string -> std:string
+s.c_str();		// std:string -> C-string
+strchr(s.c_str(), c); // pointer
+strchr(s.c_str(), c)-s.c_str(); // index of type %lu
+strcpy(s.c_str(), t.c_str());
+strcat(s.c_str(), t.c_str());
+strncat(s.c_str(), t.c_str(), n);
+strcmp(s.c_str(), t.c_str()); // return the ASKII of s-t
+strncmp(s.c_str(), t.c_str(), n); // return the ASKII of (s-t)(0:n-1)
+```
+[[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-6/main.cpp)
 
-int* b = new int(100);	//int* b = (int*) malloc(sizeof(int)*100);
-delete [] b;			//free(b)
+### Stack ###
+```cpp
+#include <stack>
 ```
 
-### Reference & ###
+### Queue ###
 ```cpp
-int a = 10;
-int &b = a;
-b = 2;
-printf("a = %d", a); // a = 2
+#include <queue> // queue<int> q;
 ```
  
 ### Vector ###
@@ -200,31 +218,6 @@ while (itr != V.end()) {
 }
 ```
 
-### String ###
-```cpp
-string s(n, c); 
-s[i] = 'a';
-s = "abcde";
-s.length(); 
-s.begin(); 
-s.end();
-s.push_back(c);
-s.erase(start, length);
-count(start, end, c);
-s.find(s); // indexof type %lu
-s.replace(start, length, s); 
-string(c_str);	// C-string -> std:string
-s.c_str();		// std:string -> C-string
-strchr(s.c_str(), c); // pointer
-strchr(s.c_str(), c)-s.c_str(); // index of type %lu
-strcpy(s.c_str(), t.c_str());
-strcat(s.c_str(), t.c_str());
-strncat(s.c_str(), t.c_str(), n);
-strcmp(s.c_str(), t.c_str()); // return the ASKII of s-t
-strncmp(s.c_str(), t.c_str(), n); // return the ASKII of (s-t)(0:n-1)
-```
-[[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-6/main.cpp)
-
 ### Set ###
 ```cpp
 #include <set>
@@ -233,11 +226,6 @@ strncmp(s.c_str(), t.c_str(), n); // return the ASKII of (s-t)(0:n-1)
 ### Map ###
 ```cpp
 #include <map> // map<int,int> & mp
-```
-
-### Queue ###
-```cpp
-#include <queue> // queue<int> q;
 ```
 
 ### Math ###
@@ -284,6 +272,30 @@ srand( (unsigned)time(NULL) );
 num = (int)( rand() / (RAND_MAX+1.0)*100.0 + 1);
 printf("%d\n", num);
 ```
+
+### new / delete ###
+
+* `new` is the same as `malloc`
+* `delete` is the same as `free`
+
+```cpp
+int* a = new int;		//int* a = (int*) malloc(sizeof(int));
+delete a;				//free(a);
+
+int* b = new int(100);	//int* b = (int*) malloc(sizeof(int)*100);
+delete [] b;			//free(b)
+```
+
+### Reference & ###
+```cpp
+int a = 10;
+int &b = a;
+b = 2;
+printf("a = %d", a); // a = 2
+```
+
+### inline ###
+Using it for short codes or when a code is implimented several times may take less compiling time. Please refer to [here](https://dotblogs.com.tw/v6610688/2013/11/27/introduction_inline_function).
 
 ### Greedy principle ###
 [[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-2/main.cpp)
@@ -334,21 +346,22 @@ list()
 To see more, please refer to [here](http://pydoing.blogspot.tw/2011/02/python-list.html).
 
 ### Polynomials ###
- ```cpp
- // ADT
- class Term{
- private:
- 		float cof;
- 		int exp;
- };
- 
- // array
- class Poly{
- private:
+```cpp
+// ADT
+class Term{
+private:
+		float cof;
+		int exp;
+};
+
+// array
+class Poly
+{
+private:
  		Term *termArray;
  		int capacity; // size of termArray, usually larger than terms just in case
  		int terms;    // # of non-zero terms
- public:
+public:
  		Poly();
  		void addNewTerm(const int exp, const float cof);
  		Poly Add(Poly p);
@@ -357,15 +370,15 @@ To see more, please refer to [here](http://pydoing.blogspot.tw/2011/02/python-li
  		float Eval(float x);
  		friend ostream& operator<<(ostream &s, const Poly &p);
  		friend istream& operator>>(istream &s, Poly &p);
- };
+};
  
- // vector
- #include <vector>
- class Poly_vec{
- private:
- 		vector<Term> terms;
- 		int num_terms;   // # of non-zero terms
- public:
+// vector
+#include <vector>
+class Poly_vec{
+private:
+		vector<Term> terms;
+		int num_terms;   // # of non-zero terms
+public:
  		Poly(); // 0x^0
  		Poly(float cof, int exp);
   		void addNewTerm(const int exp, const float cof);
@@ -375,19 +388,21 @@ To see more, please refer to [here](http://pydoing.blogspot.tw/2011/02/python-li
  		float operator()(float x); // evaluation
  		friend ostream& operator<<(ostream &s, const Poly &p);
  		friend istream& operator>>(istream &s, Poly &p);
- };
- ``` 
- [[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-2-3-8/main.cpp)
+};
+``` 
+[[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-2-3-8/main.cpp)
 
 ### Sparse matrix ###
 ```cpp
 // ADT
- class MatrixTerm{
- private:
+class MatrixTerm
+{
+private:
   		int row, col, value;
- };
+};
  
-class SparseMatrix{
+class SparseMatrix
+{
 private:
 		int rows, cols, terms, capacity; // terms=#(nonzero terms)
 		MatrixTerm *smArray;			 // capacity=size of array
@@ -410,6 +425,7 @@ int B[10][10] = {{0}};
 ```cpp
 // ADT
 class String
+{
 public:
 		String(char *init, int m);
 		bool operator==(String t);
@@ -419,7 +435,7 @@ public:
 		String Substr(int i, int j);
 		int Find(String pat); // Find 1st place of substring pat
 		int FastFind(String pat); // Knuth-Morris-Pratt
-}
+};
 ```
 ```cpp
 // C++ build-in functions
@@ -430,6 +446,7 @@ using namespace std;
 string s(3, 'a');
 //...see above
 ```
+
 ### Challenges ###
 * Random walk
 	[[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-8-8/main.cpp)
@@ -438,6 +455,29 @@ string s(3, 'a');
 	[[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX2-8-9/main.cpp)
 
 ## Stack & Queue ##
+### Stack ###
+Stack is a Last-In-First-Out (LIFO) list.
+
+```cpp
+// ADT
+template <class T>
+class Stack
+{
+public:
+	Stack(int stackCapacity = 10);
+	bool IsEmpty() const;
+	T& Top() const;
+	void Push(const T& item);
+	void Pop();
+};
+
+```
+```cpp
+// C++ build-in functions
+#include <stdio.h>
+#include <stack>
+using namespace std;
+```
 
 ## Linked list ##
 
