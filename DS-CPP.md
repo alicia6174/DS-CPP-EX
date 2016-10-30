@@ -283,7 +283,9 @@ int* a = new int;		//int* a = (int*) malloc(sizeof(int));
 delete a;				//free(a);
 
 int* b = new int(100);	//int* b = (int*) malloc(sizeof(int)*100);
-delete [] b;			//free(b)
+delete [] b;			//free(b); 
+						//It works as using 'delete b;' 
+						//instead of using 'delete []b;' (why?)
 ```
 
 ### Reference & ###
@@ -489,7 +491,7 @@ using namespace std;
 
 ### Challenges ###
 * Arrange train carriages
-
+[[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX3-2-2/main.cpp)
 
 ## Linked list ##
 
