@@ -180,7 +180,7 @@ strncmp(s.c_str(), t.c_str(), n); // return the ASKII of (s-t)(0:n-1)
 
 ### Stack ###
 ```cpp
-#include <stack>
+#include <stack> // stack<int> s;
 ```
 
 ### Queue ###
@@ -444,7 +444,7 @@ public:
 using namespace std;
 
 string s(3, 'a');
-//...see above
+//...see STL
 ```
 
 ### Challenges ###
@@ -460,6 +460,8 @@ Stack is a Last-In-First-Out (LIFO) list.
 
 ```cpp
 // ADT
+#include <vector>
+
 template <class T>
 class Stack
 {
@@ -469,6 +471,9 @@ public:
 	T& Top() const;
 	void Push(const T& item);
 	void Pop();
+	void ShowStack();
+	vector<Stack<T> > DivideStack();
+	Stack<T> MergeStack(Stack<T> St1, Stack<T> St2);
 };
 
 ```
@@ -478,6 +483,13 @@ public:
 #include <stack>
 using namespace std;
 ```
+[[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX3-2-1/main.cpp)
+
+### Queue ###
+
+### Challenges ###
+* Arrange train carriages
+
 
 ## Linked list ##
 
