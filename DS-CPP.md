@@ -488,10 +488,42 @@ using namespace std;
 [[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX3-2-1/main.cpp)
 
 ### Queue ###
+```cpp
+// ADT
+template <class T>
+class Queue
+{
+private:
+    T* queue;
+    int front, rear, capacity, numOfItems;
+public:
+    Queue(int queueCapacity);
+    bool IsEmpty();
+    bool IsFull();
+    T& Front();
+    T& Rear();
+    //void Enqueue(const T& item);
+    void EnFront(const T& item);
+    void EnRear(const T& item);
+    //void Dequeue();
+    void DeFront();
+    void DeRear();
+    T& ShowNumOfItems();
+    void ShowQueue();
+};
+```
+```cpp
+// C++ build-in functions
+#include <stdio.h>
+#include <queue>
+using namespace std;
+```
+[[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX3-3-5/main.cpp)
 
 ### Challenges ###
-* Arrange train carriages
+* Arrange train carriages (stack)
 [[C++]](https://github.com/alicia6174/DS-CPP-EX/blob/master/EX3-2-2/main.cpp)
+
 
 ## Linked list ##
 
